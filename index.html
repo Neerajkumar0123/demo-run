@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hello World Demo</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 50px;
+  }
+  #message {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <div id="message">Hello World!</div>
+  <button id="colorBtn">Change Color</button>
+
+<script>
+  const colors = ['red', 'green', 'blue', 'orange', 'purple'];
+  let index = 0;
+  document.getElementById('colorBtn').addEventListener('click', () => {
+    index = (index + 1) % colors.length;
+    document.getElementById('message').style.color = colors[index];
+  });
+</script>
+</body>
+</html>
