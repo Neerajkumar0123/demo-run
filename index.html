@@ -5,64 +5,86 @@ html
 <meta charset="UTF-8">
 <title>Hello World Demo</title>
 <style>
+  /* Body background – replace the data URL below with the base64 data of the uploaded image */
   body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    /* 1×1 pixel black PNG as background */
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/0F6G3wAAAABJRU5ErkJggg==');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
     height: 100vh;
+    background: url('data:image/png;base64,INSERT_BASE64_OF_UPLOADED_IMAGE_HERE') no-repeat center center fixed;
+    background-size: cover;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    text-align: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    color: #fff;
   }
-  h1 {
+
+  #message {
     font-size: 3rem;
-    margin: 0 0 1rem 0;
-    transition: color 0.5s ease;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 1rem;
   }
-  button {
-    padding: 0.75rem 1.5rem;
-    margin: 0.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-  }
+
+  /* Fade animation */
   @keyframes fade {
     0%   { opacity: 1; }
-    50%  { opacity: 0.3; }
+    50%  { opacity: 0; }
     100% { opacity: 1; }
   }
-  .fade {
+
+  .fading {
     animation: fade 2s infinite;
+  }
+
+  .controls {
+    margin-top: 2rem;
+  }
+
+  .controls button {
+    padding: 0.75rem 1.5rem;
+    margin: 0 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    transition: background 0.3s;
+  }
+
+  .controls button:hover {
+    background: rgba(255,255,255,0.4);
   }
 </style>
 </head>
 <body>
-  <h1 id="message">Hello World!</h1>
-  <div>
-    <button id="colorBtn">Change Color</button>
-    <button id="toggleBtn">Toggle Animation</button>
-  </div>
+
+<div id="message">Hello World!</div>
+
+<div class="controls">
+  <button id="colorBtn">Change Color</button>
+  <button id="animBtn">Toggle Animation</button>
+</div>
 
 <script>
-  const colors = ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231'];
-  let colorIndex = 0;
-  const message = document.getElementById('message');
-  const colorBtn = document.getElementById('colorBtn');
-  const toggleBtn = document.getElementById('toggleBtn');
+  (function() {
+    const colors = ['#FF6347', '#32CD32', '#1E90FF', '#FFD700', '#8A2BE2'];
+    let colorIndex = 0;
+    const messageEl = document.getElementById('message');
+    const colorBtn = document.getElementById('colorBtn');
+    const animBtn = document.getElementById('animBtn');
 
-  colorBtn.addEventListener('click', () => {
-    colorIndex = (colorIndex + 1) % colors.length;
-    message.style.color = colors[colorIndex];
-  });
+    colorBtn.addEventListener('click', () => {
+      colorIndex = (colorIndex + 1) % colors.length;
+      messageEl.style.color = colors[colorIndex];
+    });
 
-  toggleBtn.addEventListener('click', () => {
-    message.classList.toggle('fade');
-  });
+    animBtn.addEventListener('click', () => {
+      messageEl.classList.toggle('fading');
+    });
+  })();
 </script>
+
 </body>
 </html>
