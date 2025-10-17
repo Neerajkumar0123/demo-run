@@ -1,69 +1,67 @@
+html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>Hello World Demo</title>
 <style>
-  body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQYV2NgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=');
-    background-size:cover;
-    background-position:center;
-    font-family:sans-serif;
-    color:#fff;
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    /* 1×1 pixel black PNG as background */
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/0F6G3wAAAABJRU5ErkJggg==');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
-  h1{
-    font-size:4rem;
-    margin:0;
-    transition:color 0.5s;
+  h1 {
+    font-size: 3rem;
+    margin: 0 0 1rem 0;
+    transition: color 0.5s ease;
   }
-  .fade{
-    animation: fadeEffect 2s infinite;
+  button {
+    padding: 0.75rem 1.5rem;
+    margin: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
   }
-  @keyframes fadeEffect{
-    0%{opacity:1;}
-    50%{opacity:0.1;}
-    100%{opacity:1;}
+  @keyframes fade {
+    0%   { opacity: 1; }
+    50%  { opacity: 0.3; }
+    100% { opacity: 1; }
   }
-  .controls{
-    margin-top:1rem;
-  }
-  button{
-    margin:0.5rem;
-    padding:0.5rem 1rem;
-    font-size:1rem;
-    cursor:pointer;
+  .fade {
+    animation: fade 2s infinite;
   }
 </style>
 </head>
 <body>
-  <h1 id="message">Hello World!</h1>
-  <div class="controls">
+  <h1 id="message">Hello World!</h1>
+  <div>
     <button id="colorBtn">Change Color</button>
-    <button id="animBtn">Toggle Animation</button>
+    <button id="toggleBtn">Toggle Animation</button>
   </div>
+
 <script>
-  const colors = ['red', 'orange', 'yellow', 'green', 'blue'];
-  let currentIndex = 0;
+  const colors = ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231'];
+  let colorIndex = 0;
   const message = document.getElementById('message');
-  document.getElementById('colorBtn').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % colors.length;
-    message.style.color = colors[currentIndex];
+  const colorBtn = document.getElementById('colorBtn');
+  const toggleBtn = document.getElementById('toggleBtn');
+
+  colorBtn.addEventListener('click', () => {
+    colorIndex = (colorIndex + 1) % colors.length;
+    message.style.color = colors[colorIndex];
   });
 
-  let animationActive = false;
-  document.getElementById('animBtn').addEventListener('click', () => {
-    animationActive = !animationActive;
-    if (animationActive) {
-      message.classList.add('fade');
-    } else {
-      message.classList.remove('fade');
-    }
+  toggleBtn.addEventListener('click', () => {
+    message.classList.toggle('fade');
   });
 </script>
 </body>
