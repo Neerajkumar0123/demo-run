@@ -1,7 +1,7 @@
 # Hello World Demo
 
 ## Overview
-This simple web page displays a “Hello World!” message with two interactive controls:
+A simple web page that displays a “Hello World!” message with two interactive controls:
 - **Change Color** cycles the text through five preset colors.
 - **Toggle Animation** starts or stops a continuous fade‑in/fade‑out animation on the text.
 - The page background is set to the uploaded image, embedded as a base64 data URL.
