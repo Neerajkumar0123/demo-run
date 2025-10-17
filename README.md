@@ -1,13 +1,13 @@
 # Hello World Demo
 
 ## Overview
-A minimal web page that displays a “Hello World!” message.  
-- The text color can be cycled through five different colors with the **Change Color** button.  
-- A **Toggle Animation** button starts or stops a continuous fade‑in/fade‑out animation on the text.  
-- The page background is set to the uploaded image, which is embedded as a base64‑encoded PNG.
+A simple web page that displays a “Hello World!” message with interactive controls:
+- **Change Color** cycles the text through five preset colors.
+- **Toggle Animation** starts or stops a continuous fade‑in/fade‑out animation on the text.
+- The page background is set to a base64‑encoded 1×1 pixel PNG image (black) to demonstrate background embedding.
 
 ## Setup
-No special setup is required.  
+No setup is required.  
 Open `index.html` in any modern web browser (Chrome, Firefox, Edge, Safari, etc.).
 
 ## Usage
