@@ -1,90 +1,70 @@
-html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <title>Hello World Demo</title>
 <style>
-  body {
+  body{
+    margin:0;
+    height:100vh;
     display:flex;
     flex-direction:column;
-    align-items:center;
     justify-content:center;
-    height:100vh;
-    margin:0;
+    align-items:center;
+    background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQYV2NgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=');
+    background-size:cover;
+    background-position:center;
     font-family:sans-serif;
-    background:#f0f0f0;
+    color:#fff;
   }
-
-  #hello {
-    font-size:3rem;
-    font-weight:bold;
-    color:#ff5722;
-    margin-bottom:20px;
-    /* initial state without animation */
+  h1{
+    font-size:4rem;
+    margin:0;
+    transition:color 0.5s;
   }
-
-  /* Fade animation */
-  @keyframes fadeInOut {
-    0%   { opacity: 0; }
-    50%  { opacity: 1; }
-    100% { opacity: 0; }
+  .fade{
+    animation: fadeEffect 2s infinite;
   }
-
-  /* Class that applies animation */
-  .fading {
-    animation: fadeInOut 2s infinite;
+  @keyframes fadeEffect{
+    0%{opacity:1;}
+    50%{opacity:0.1;}
+    100%{opacity:1;}
   }
-
-  button {
-    padding:10px 20px;
-    margin:5px;
+  .controls{
+    margin-top:1rem;
+  }
+  button{
+    margin:0.5rem;
+    padding:0.5rem 1rem;
     font-size:1rem;
     cursor:pointer;
-    border:none;
-    border-radius:5px;
-    background:#2196f3;
-    color:#fff;
-    transition:background 0.3s;
-  }
-
-  button:hover {
-    background:#1976d2;
   }
 </style>
 </head>
 <body>
-  <div id="hello">Hello World!</div>
-  <div>
+  <h1 id="message">Hello World!</h1>
+  <div class="controls">
     <button id="colorBtn">Change Color</button>
-    <button id="toggleBtn">Toggle Animation</button>
+    <button id="animBtn">Toggle Animation</button>
   </div>
-
 <script>
-  // Color cycling logic
-  const colors = ['#ff5722', '#4caf50', '#2196f3', '#9c27b0', '#ffeb3b'];
-  let colorIndex = 0;
-  const helloEl = document.getElementById('hello');
+  const colors = ['red', 'orange', 'yellow', 'green', 'blue'];
+  let currentIndex = 0;
+  const message = document.getElementById('message');
   document.getElementById('colorBtn').addEventListener('click', () => {
-    colorIndex = (colorIndex + 1) % colors.length;
-    helloEl.style.color = colors[colorIndex];
+    currentIndex = (currentIndex + 1) % colors.length;
+    message.style.color = colors[currentIndex];
   });
 
-  // Animation toggle logic
-  let animEnabled = false;
-  document.getElementById('toggleBtn').addEventListener('click', () => {
-    animEnabled = !animEnabled;
-    if (animEnabled) {
-      helloEl.classList.add('fading');
-      document.getElementById('toggleBtn').textContent = 'Stop Animation';
+  let animationActive = false;
+  document.getElementById('animBtn').addEventListener('click', () => {
+    animationActive = !animationActive;
+    if (animationActive) {
+      message.classList.add('fade');
     } else {
-      helloEl.classList.remove('fading');
-      document.getElementById('toggleBtn').textContent = 'Start Animation';
+      message.classList.remove('fade');
     }
   });
-
-  // Initially set button text
-  document.getElementById('toggleBtn').textContent = 'Start Animation';
 </script>
 </body>
 </html>
