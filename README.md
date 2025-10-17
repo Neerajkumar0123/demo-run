@@ -3,9 +3,8 @@
 ## Overview
 A minimal web page that displays a “Hello World!” message.  
 - The text color can be cycled through five different colors with the **Change Color** button.  
-- A **Toggle Animation** button starts or stops a continuous fade‑in/fade‑out animation on the text.
-
-The animation is implemented with CSS keyframes and is toggled by adding or removing a CSS class via JavaScript.
+- A **Toggle Animation** button starts or stops a continuous fade‑in/fade‑out animation on the text.  
+- The page background is set to the uploaded image, which is embedded as a base64‑encoded PNG.
 
 ## Setup
 No special setup is required.  
@@ -17,6 +16,6 @@ Open `index.html` in any modern web browser (Chrome, Firefox, Edge, Safari, etc.
 3. Click **Toggle Animation** to start the fade effect; click again to stop it.
 
 ## Round 2 Improvements
-- Added a CSS fade‑in/fade‑out animation.
-- Included a button to toggle the animation on and off.
-- Kept the original color‑cycling functionality for user interactivity.
+- Added a CSS fade‑in/fade‑out animation controlled by the **Toggle Animation** button.  
+- Embedded the provided PNG as a background image using a data URL.  
+- Maintained the original color‑cycling functionality for user interaction.
