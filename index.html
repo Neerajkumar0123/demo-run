@@ -5,86 +5,71 @@ html
 <meta charset="UTF-8">
 <title>Hello World Demo</title>
 <style>
-  /* Body background – replace the data URL below with the base64 data of the uploaded image */
   body {
     margin: 0;
     height: 100vh;
-    background: url('data:image/png;base64,INSERT_BASE64_OF_UPLOADED_IMAGE_HERE') no-repeat center center fixed;
+    /* Embedded background image (light green 1x1 PNG) */
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/5+BAQAEAAH+5R1uAAAAAElFTkSuQmCC');
     background-size: cover;
+    background-position: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: Arial, sans-serif;
-    color: #fff;
   }
 
-  #message {
+  h1 {
     font-size: 3rem;
-    font-weight: bold;
-    text-align: center;
-    margin: 0 1rem;
+    margin: 0 0 1rem 0;
+    transition: color 0.3s ease;
   }
 
-  /* Fade animation */
-  @keyframes fade {
-    0%   { opacity: 1; }
-    50%  { opacity: 0; }
-    100% { opacity: 1; }
-  }
-
-  .fading {
-    animation: fade 2s infinite;
-  }
-
-  .controls {
-    margin-top: 2rem;
-  }
-
-  .controls button {
+  button {
     padding: 0.75rem 1.5rem;
-    margin: 0 0.5rem;
+    margin: 0.5rem;
     font-size: 1rem;
     cursor: pointer;
-    border: none;
-    border-radius: 4px;
-    background: rgba(255,255,255,0.2);
-    color: #fff;
-    transition: background 0.3s;
   }
 
-  .controls button:hover {
-    background: rgba(255,255,255,0.4);
+  /* Fade-in/out animation */
+  @keyframes fade {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  .animate {
+    animation: fade 2s infinite;
   }
 </style>
 </head>
 <body>
-
-<div id="message">Hello World!</div>
-
-<div class="controls">
+<h1 id="greeting">Hello World!</h1>
+<div>
   <button id="colorBtn">Change Color</button>
   <button id="animBtn">Toggle Animation</button>
 </div>
 
 <script>
-  (function() {
-    const colors = ['#FF6347', '#32CD32', '#1E90FF', '#FFD700', '#8A2BE2'];
-    let colorIndex = 0;
-    const messageEl = document.getElementById('message');
-    const colorBtn = document.getElementById('colorBtn');
-    const animBtn = document.getElementById('animBtn');
+  const colors = ["#e53935", "#e65100", "#f4511e", "#5e35b1", "#3949ab"];
+  let colorIndex = 0;
+  const greeting = document.getElementById("greeting");
+  const colorBtn = document.getElementById("colorBtn");
+  const animBtn = document.getElementById("animBtn");
 
-    colorBtn.addEventListener('click', () => {
-      colorIndex = (colorIndex + 1) % colors.length;
-      messageEl.style.color = colors[colorIndex];
-    });
+  colorBtn.addEventListener("click", () => {
+    greeting.style.color = colors[colorIndex];
+    colorIndex = (colorIndex + 1) % colors.length;
+  });
 
-    animBtn.addEventListener('click', () => {
-      messageEl.classList.toggle('fading');
-    });
-  })();
+  let animOn = false;
+  animBtn.addEventListener("click", () => {
+    animOn = !animOn;
+    if (animOn) {
+      greeting.classList.add("animate");
+    } else {
+      greeting.classList.remove("animate");
+    }
+  });
 </script>
-
 </body>
 </html>
